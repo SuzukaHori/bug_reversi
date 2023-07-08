@@ -70,6 +70,7 @@ end
 def turn!(board, target_pos, attack_stone_color, direction)
   return false if target_pos.out_of_board?
   return false if target_pos.stone_color(board) == attack_stone_color || target_pos.stone_color(board) == 0
+  
   next_pos = target_pos.next_position(direction)
   if (next_pos.stone_color(board) == attack_stone_color) || turn!(board, next_pos, attack_stone_color, direction)
     board[target_pos.col][target_pos.row] = attack_stone_color
